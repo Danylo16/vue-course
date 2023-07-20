@@ -1,12 +1,21 @@
 <template>
-    <div class="post" v-for="post in posts">
-        <div><strong>Name: </strong>{{ post.title }}</div>
-        <div><strong>Description: </strong>{{ post.body }}</div>
+    <div>
+        <h2>List of souls</h2>
+        <post-item 
+        :post="post"
+        :key="post.id"
+        @remove="$emit('rempove', post)"
+        v-for="post in posts"
+        />
     </div>
 </template>
 
 <script>
+    import PostItem from "@/components/PostItem.vue"
     export default{
+        components:{
+            PostItem
+        },
         props:{
             posts:{
                 type: Array,
@@ -17,9 +26,4 @@
 </script>
 
 <style scoped>
-.post{
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
-}
 </style>
