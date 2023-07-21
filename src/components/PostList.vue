@@ -1,13 +1,16 @@
 <template>
-    <div>
+    <div v-if="posts.length>0">
         <h2>List of souls</h2>
         <post-item 
         :post="post"
         :key="post.id"
-        @remove="$emit('rempove', post)"
+        @remove="$emit('remove', post)"
         v-for="post in posts"
         />
     </div>
+    <h2 v-else>
+        There ain't shit here
+    </h2>
 </template>
 
 <script>
